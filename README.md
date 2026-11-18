@@ -1,11 +1,8 @@
-
-[![Open in MATLAB Online](https://www.mathworks.com/images/responsive/global/open-in-matlab-online.svg)](https://matlab.mathworks.com/open/github/v1?repo=l23212178-sys/MSFP4)
+[![Open in MATLAB Online](https://www.mathworks.com/images/responsive/global/open-in-matlab-online.svg)](https://matlab.mathworks.com/)
 
 # Práctica 4 — Modelado y control del sistema endócrino
 
-Repositorio académico de **Modelado de Sistemas Fisiológicos (IBF-1020)**, del programa de **Ingeniería Biomédica** del Tecnológico Nacional de México / Instituto Tecnológico de Tijuana.
-
-La práctica comprende el modelado matemático de un sistema endócrino mediante analogías eléctricas, la comparación entre condiciones de control y caso, el diseño de un controlador PID y la verificación mediante MATLAB, Simulink, Python y resultados experimentales.
+Repositorio académico de **Modelado de Sistemas Fisiológicos (IBF-1020)**, del programa de **Ingeniería Biomédica** del Tecnológico Nacional de México / Instituto Tecnológico de Tijuana. El trabajo comprende la analogía eléctrica de un sistema endócrino, la formulación de una planta de segundo orden, la comparación de una condición **control** y una condición **caso**, la implementación de un controlador PID y la verificación mediante simulación y mediciones de laboratorio.
 
 **Docente:** Dr. Paul Antonio Valle Trujillo  
 **Correo:** paul.valle@tectijuana.edu.mx  
@@ -17,7 +14,7 @@ La práctica comprende el modelado matemático de un sistema endócrino mediante
 **Número de control:** 23212178  
 **Correo institucional:** l23212178@tectijuana.edu.mx  
 **Repositorio de la asignatura:** https://github.com/DrPaulValle/MSF-IBF1020  
-**Sede:** Tijuana, Baja California, México.
+**Sede:** Blvd. Alberto Limón Padilla s/n, Tijuana, C. P. 22454, B. C., México.
 
 ---
 
@@ -47,11 +44,9 @@ La práctica comprende el modelado matemático de un sistema endócrino mediante
 <a id="resumen"></a>
 ## Resumen
 
-Esta práctica tiene como finalidad analizar y modelar el comportamiento dinámico del sistema endócrino mediante un circuito eléctrico equivalente de segundo orden. Se consideran dos condiciones: un sistema de control que representa una respuesta de referencia y un caso alterado.
+Esta práctica analiza un modelo fenomenológico simplificado de secreción, transporte, almacenamiento y respuesta hormonal. La analogía eléctrica utiliza dos resistencias, una capacitancia y una inductancia para estudiar las diferencias dinámicas entre una condición de referencia y otra alterada. Se obtienen las funciones de transferencia, se comparan las respuestas a una entrada unitaria y se incorpora un controlador PID para aproximar la respuesta del caso a la del control. El trabajo reúne un cuaderno MATLAB, un modelo Simulink, un programa Python, un esquema en BioRender, gráficas y una captura de osciloscopio.
 
-Se utilizan resistencias, capacitancia e inductancia para representar procesos de transporte, almacenamiento y respuesta de una señal hormonal. A partir de las leyes de Kirchhoff se obtiene la función de transferencia del sistema, permitiendo analizar su estabilidad y comportamiento temporal.
-
-Posteriormente, se implementa un controlador PID para reducir la diferencia entre la respuesta del caso y la condición de control. Los resultados se obtienen mediante MATLAB/Simulink y Python, complementándose con una representación fisiológica desarrollada en BioRender y evidencia experimental mediante osciloscopio.
+El diagrama BioRender ilustra **homeostasis** y un **caso etiquetado como hipertiroidismo**. Esta denominación es una interpretación gráfica del estudiante: el modelo eléctrico del instructivo es genérico y no valida por sí solo un diagnóstico o una fisiología específica de la tiroides.
 
 **Palabras clave:** sistema endócrino; homeostasis; hipertiroidismo; analogía eléctrica; circuito RLC; función de transferencia; PID; MATLAB; Simulink; Simscape Electrical; Python; BioRender.
 
@@ -64,22 +59,20 @@ Posteriormente, se implementa un controlador PID para reducir la diferencia entr
 
 ### Competencia a desarrollar
 
-Modelar sistemas fisiológicos mediante analogías eléctricas, ecuaciones diferenciales y funciones de transferencia, analizando su comportamiento dinámico y aplicando estrategias de control para mejorar su respuesta.
+Modelar sistemas fisiológicos mediante analogías eléctricas, ecuaciones diferenciales y funciones de transferencia; analizar su dinámica y diseñar estrategias de control clásico, contrastando simulaciones con evidencia experimental.
 
 ### Objetivo general
 
-Modelar y comparar las respuestas de un sistema endócrino bajo condiciones de control y caso, implementando un controlador PID que permita aproximar la respuesta alterada a la condición de referencia.
+Modelar y comparar las respuestas de un sistema endócrino en condiciones control y caso, e implementar un controlador PID para reducir la diferencia entre ambas.
 
 ### Objetivos específicos
 
-- Identificar las variables de entrada y salida del sistema.
-- Establecer la analogía eléctrica del sistema endócrino.
-- Obtener las ecuaciones diferenciales y funciones de transferencia.
-- Analizar el error estacionario y la estabilidad.
-- Simular el sistema mediante MATLAB y Simulink.
-- Implementar un controlador PID.
-- Reproducir los resultados utilizando Python.
-- Comparar las simulaciones con la evidencia experimental.
+- Identificar las variables de entrada, salida y flujos en el circuito equivalente.
+- Formular la función de transferencia de segundo orden para cada condición.
+- Estudiar error estacionario, polos y estabilidad.
+- Simular las respuestas en MATLAB/Simulink y Python.
+- Aplicar retroalimentación negativa y documentar las ganancias del PID.
+- Integrar la representación fisiológica y la evidencia de laboratorio.
 
 [Volver al contenido](#contenido)
 
@@ -101,24 +94,17 @@ Modelar y comparar las respuestas de un sistema endócrino bajo condiciones de c
 <a id="biorender"></a>
 ## Modelo fisiológico y BioRender
 
-El sistema endócrino regula diversas funciones fisiológicas mediante la secreción de hormonas y su interacción con órganos y tejidos.
-
-Para esta práctica se realizó una representación gráfica en BioRender, considerando dos condiciones:
-
-- **Control:** sistema endócrino en homeostasis.
-- **Caso:** representación ilustrativa de hipertiroidismo.
+El sistema endócrino coordina procesos fisiológicos mediante la secreción de hormonas y su acción sobre tejidos diana. Para esta práctica se utiliza una representación simplificada de estímulo, transporte, almacenamiento y respuesta.
 
 ### Diagrama desarrollado en BioRender
 
-<p align="center">
-  <img src="imagenes/biorender.png" alt="Sistema endocrino en BioRender" width="850">
-</p>
+![BioRender: sistema endócrino en homeostasis y caso de hipertiroidismo](imagenes/biorender.png)
 
-**Figura 1.** Representación del sistema endócrino en homeostasis y del caso de hipertiroidismo, incluyendo la analogía eléctrica y las variables Ve(t), Fe(t), Vs(t), Fs(t), R1, R2, C y L.
+*Figura 1. Diagrama original de BioRender: a la izquierda, sistema de control en homeostasis y circuito eléctrico equivalente; a la derecha, caso ilustrativo de hipertiroidismo. Se identifican Ve(t), Fe(t), Vs(t), Fs(t), R1, R2, C y L.*
 
-[Consultar BioRender original en PDF](Biorender%20%28sistema%20endocrino%29.pdf)
+[Ver archivo original en PDF](Biorender%20%28sistema%20endocrino%29.pdf)
 
-La representación anatómica es ilustrativa. El modelo eléctrico es una simplificación matemática y no constituye una validación clínica específica del hipertiroidismo.
+> **Nota de alcance:** la analogía eléctrica del manual es fenomenológica. Los elementos del circuito no representan directamente órganos anatómicos ni concentraciones hormonales reales; el diagrama es una interpretación visual didáctica.
 
 [Volver al contenido](#contenido)
 
@@ -127,22 +113,20 @@ La representación anatómica es ilustrativa. El modelo eléctrico es una simpli
 <a id="analogia"></a>
 ## Analogía eléctrica y parámetros
 
-El sistema se representa mediante un circuito compuesto por dos resistencias, una capacitancia y una inductancia.
+La fuente de entrada **Ve(t)** se conecta en serie con **R1**. Después de R1 se encuentra el nodo **Vs(t)**, con una rama de capacitor **C** a tierra y otra rama formada por **L** y **R2** en serie a tierra.
 
-La fuente Ve(t) se conecta en serie con R1. Posteriormente se encuentra el nodo Vs(t), con una rama capacitiva C conectada a tierra y otra rama compuesta por L y R2 en serie.
-
-| Variable | Interpretación |
+| Variable | Representación en el modelo |
 |---|---|
-| Ve(t) | Estímulo de entrada |
-| Fe(t) | Flujo de secreción hormonal |
-| R1 | Resistencia al transporte |
-| C | Almacenamiento de la señal hormonal |
-| L | Inercia o retardo de respuesta |
-| R2 | Utilización o eliminación de la señal |
-| Fs(t) | Flujo asociado con la respuesta |
-| Vs(t) | Señal de salida del sistema |
+| Ve(t) | Estímulo de entrada para la secreción hormonal |
+| Fe(t) | Flujo de secreción y transporte hormonal |
+| R1 | Oposición efectiva al transporte |
+| C | Almacenamiento temporal de la señal hormonal |
+| L | Retardo o inercia de la respuesta |
+| R2 | Utilización, disipación o eliminación de la señal |
+| Fs(t) | Flujo asociado con la respuesta del órgano diana |
+| Vs(t) | Nivel hormonal efectivo normalizado; variable de salida |
 
-### Parámetros utilizados
+### Valores utilizados
 
 | Parámetro | Control | Caso |
 |---|---:|---:|
@@ -151,7 +135,7 @@ La fuente Ve(t) se conecta en serie con R1. Posteriormente se encuentra el nodo 
 | C | 1 µF | 1000 µF |
 | R2 | 100 kΩ | 1 kΩ |
 
-Los parámetros corresponden a los utilizados en el programa Python de la práctica.
+Los valores se corresponden con los definidos en el archivo `codigo.py`. La variación simultánea de C y R2 permite estudiar los cambios en la dinámica del sistema.
 
 [Volver al contenido](#contenido)
 
@@ -162,65 +146,35 @@ Los parámetros corresponden a los utilizados en el programa Python de la práct
 
 ### Ecuaciones integro-diferenciales
 
-Aplicando las leyes de Kirchhoff:
+Aplicando las leyes de Kirchhoff a la topología descrita:
 
-$$
-F_e(t)=C\frac{dV_s(t)}{dt}+F_s(t)
-$$
+$$F_e(t)=C\frac{dV_s(t)}{dt}+F_s(t)$$
 
-$$
-V_e(t)=R_1F_e(t)+V_s(t)
-$$
+$$V_e(t)=R_1F_e(t)+V_s(t)$$
 
-$$
-V_s(t)=L\frac{dF_s(t)}{dt}+R_2F_s(t)
-$$
+$$V_s(t)=L\frac{dF_s(t)}{dt}+R_2F_s(t)$$
 
-Despejando las derivadas:
+Equivalente en forma de estados:
 
-$$
-\frac{dV_s}{dt}=
-\frac{1}{C}
-\left(
-\frac{V_e-V_s}{R_1}-F_s
-\right)
-$$
+$$\frac{dV_s}{dt}=\frac{1}{C}\left(\frac{V_e-V_s}{R_1}-F_s\right)$$
 
-$$
-\frac{dF_s}{dt}=
-\frac{V_s-R_2F_s}{L}
-$$
+$$\frac{dF_s}{dt}=\frac{V_s-R_2F_s}{L}$$
 
 ### Función de transferencia general
 
-Aplicando la transformada de Laplace con condiciones iniciales nulas:
+Para condiciones iniciales nulas:
 
-$$
-\boxed{
-G(s)=\frac{V_s(s)}{V_e(s)}
-=
-\frac{Ls+R_2}
-{CLR_1s^2+(CR_1R_2+L)s+(R_1+R_2)}
-}
-$$
+$$\boxed{G(s)=\frac{V_s(s)}{V_e(s)}=\frac{Ls+R_2}{CL R_1s^2+(CR_1R_2+L)s+(R_1+R_2)}}$$
 
-El numerador contiene el término **Ls + R2**, mientras que el denominador es de segundo orden.
+El numerador contiene **Ls + R2** y el denominador es de segundo orden, debido a la presencia de C y L.
 
-### Función de transferencia del sistema control
+### Funciones para las condiciones estudiadas
 
-$$
-G_{control}(s)=
-\frac{0.1s+100000}
-{0.0001s^2+100.0001s+101000}
-$$
+Con los parámetros de la tabla:
 
-### Función de transferencia del caso
+$$G_{control}(s)=\frac{0.1s+100000}{0.0001s^2+100.0001s+101000}$$
 
-$$
-G_{caso}(s)=
-\frac{0.1s+1000}
-{0.1s^2+1000.1s+2000}
-$$
+$$G_{caso}(s)=\frac{0.1s+1000}{0.1s^2+1000.1s+2000}$$
 
 [Volver al contenido](#contenido)
 
@@ -231,48 +185,23 @@ $$
 
 ### Error en estado estacionario
 
-Para una entrada escalón unitario, el valor final de una planta estable se determina mediante:
+Para un escalón unitario y una planta estable, el valor final es G(0):
 
-$$
-V_s(\infty)=G(0)
-$$
+$$V_{s,control}(\infty)=\frac{100000}{101000}\approx0.9901$$
 
-Para el sistema control:
+$$V_{s,caso}(\infty)=\frac{1000}{2000}=0.5$$
 
-$$
-V_{s,control}(\infty)=
-\frac{100000}{101000}
-\approx0.9901
-$$
+Por lo tanto, los errores de seguimiento de la entrada unitaria, **en lazo abierto**, son:
 
-Para el caso:
+$$e_{ss,control}\approx0.0099,\qquad e_{ss,caso}=0.5$$
 
-$$
-V_{s,caso}(\infty)=
-\frac{1000}{2000}=0.5
-$$
+### Polos y estabilidad
 
-Por lo tanto, los errores estacionarios en lazo abierto son:
+Los polos se obtienen resolviendo:
 
-$$
-e_{ss,control}\approx0.0099
-$$
+$$CL R_1s^2+(CR_1R_2+L)s+(R_1+R_2)=0$$
 
-$$
-e_{ss,caso}=0.5
-$$
-
-### Análisis de estabilidad
-
-Los polos del sistema se obtienen a partir del denominador:
-
-$$
-CLR_1s^2+(CR_1R_2+L)s+(R_1+R_2)=0
-$$
-
-Las condiciones control y caso presentan polos con parte real negativa, por lo que las plantas analizadas son estables.
-
-Sin embargo, sus diferentes parámetros producen variaciones en el tiempo de respuesta y en el valor estacionario.
+Los coeficientes son positivos en ambas configuraciones; las plantas del modelo tienen polos con parte real negativa. La diferencia entre parámetros modifica la rapidez de la respuesta y el nivel final. La comparación visual aparece en las gráficas incluidas más adelante.
 
 [Volver al contenido](#contenido)
 
@@ -281,18 +210,16 @@ Sin embargo, sus diferentes parámetros producen variaciones en el tiempo de res
 <a id="senales"></a>
 ## Señal de entrada y condiciones de simulación
 
-Se utiliza una señal escalón unitario para observar el comportamiento temporal de las condiciones control y caso.
+Se utiliza una **entrada escalón unitario**, `Ve(t) = 1`, sobre el intervalo de 0 a 10 segundos. Aunque el encabezado del cuaderno MATLAB dice «Respuesta al impulso», el código Python usa `np.ones(N)` y las figuras muestran un escalón; por ello se describe aquí como respuesta al escalón.
 
 | Parámetro | Valor |
 |---|---|
 | Tiempo inicial | 0 s |
 | Tiempo final | 10 s |
-| Paso temporal en Python | 0.001 s |
-| Solver MATLAB | ode15s |
-| Paso máximo Simulink | 1e-3 s |
-| Entrada | Escalón unitario |
-
-La señal permite comparar el tiempo de respuesta, el valor estacionario y el efecto del controlador PID.
+| Paso temporal en Python | 1 × 10⁻³ s |
+| Solver en MATLAB/Simulink | `ode15s` |
+| Paso máximo en Simulink | `1e-3` s |
+| Entrada | Escalón de amplitud 1 |
 
 [Volver al contenido](#contenido)
 
@@ -301,39 +228,27 @@ La señal permite comparar el tiempo de respuesta, el valor estacionario y el ef
 <a id="matlab"></a>
 ## Implementación en MATLAB, Simulink y Simscape
 
-La simulación se realizó mediante el cuaderno computacional MATLAB y el modelo de Simulink.
-
-### Código de simulación
+El cuaderno [`Armenta23212178.mlx`](Armenta23212178.mlx) ejecuta el modelo [`sistema(3).slx`](sistema%283%29.slx) y representa las respuestas del control, caso, tratamiento PID y entrada. El cuaderno emplea la configuración siguiente:
 
 ```matlab
 clc; clear; close all; warning('off','all')
-
 open_system('sistema')
-
 parameters.StopTime = '10';
 parameters.Solver = 'ode15s';
 parameters.MaxStep = '1e-3';
-
 x = sim('sistema',parameters);
-
 plotsignals(x.control,x.CE,x.PID,x.Ve,'Caso')
 ```
 
-El código ejecuta el modelo y recupera las señales correspondientes a la condición control, caso, tratamiento PID y entrada.
+**Importante:** el archivo adjunto se llama `sistema(3).slx`, pero el cuaderno invoca `sistema`. Para reproducirlo sin modificar el cuaderno, renombrar una copia del archivo a `sistema.slx` antes de ejecutar. El archivo original se conserva en este repositorio.
 
-El archivo del modelo se proporciona como `sistema(3).slx`. Para ejecutar el cuaderno sin modificar las llamadas, debe utilizarse una copia denominada `sistema.slx`.
+### Respuesta obtenida en MATLAB
 
-### Resultados obtenidos en MATLAB
+![Gráfica del cuaderno MATLAB: control, caso, PID y entrada](imagenes/matlab.png)
 
-<p align="center">
-  <img src="imagenes/matlab.png" alt="Resultados MATLAB" width="850">
-</p>
+*Figura 2. Respuestas de la simulación del cuaderno MATLAB, de 0 a 10 s.*
 
-**Figura 2.** Respuestas de las condiciones control, caso y tratamiento PID obtenidas mediante MATLAB.
-
-[Consultar gráfica original](grafica%20cuadernillo.pdf)
-
-[Consultar cuaderno MATLAB](Armenta23212178.pdf)
+[Ver gráfica original](grafica%20cuadernillo.pdf) · [Ver reporte del cuaderno](Armenta23212178.pdf)
 
 [Volver al contenido](#contenido)
 
@@ -342,53 +257,36 @@ El archivo del modelo se proporciona como `sistema(3).slx`. Para ejecutar el cua
 <a id="pid"></a>
 ## Control PID y lazo cerrado
 
-Para corregir la respuesta del caso se implementó un controlador PID con retroalimentación negativa.
+La respuesta de la condición control se utiliza como referencia para corregir la respuesta del caso. La diferencia entre ambas es:
 
-La señal de error se define como:
+$$e(t)=V_{s,control}(t)-V_{s,caso}(t)$$
 
-$$
-e(t)=V_{s,control}(t)-V_{s,caso}(t)
-$$
+El controlador ideal se expresa como:
 
-El controlador PID ideal se expresa mediante:
+$$K(s)=k_P+\frac{k_I}{s}+k_Ds$$
 
-$$
-K(s)=k_P+\frac{k_I}{s}+k_Ds
-$$
+En el programa Python entregado se emplearon estas ganancias:
 
-### Ganancias del controlador
-
-| Parámetro | Valor |
+| Ganancia | Valor |
 |---|---:|
 | kP | 13209.9564 |
 | kI | 32316525.9285 |
 | kD | 0.18118 |
 
-### Implementación del PID en Python
+El código también construye una realización racional del controlador a partir de componentes analógicos:
 
 ```python
-kP,kI,kD = 13209.9564,32316525.9285,0.18118
-
 Cr = 1E-6
 Re = 1/(Cr*kI)
 Rr = kP*Re
 Ce = kD/Rr
-
-numPID = [Re*Rr*Ce*Cr,Re*Ce+Rr*Cr,1]
-denPID = [Re*Cr,0]
-
-PID = ctrl.tf(numPID,denPID)
-
-sysPID = ctrl.feedback(
-    ctrl.series(PID,sysCaso),
-    1,
-    sign=-1
-)
+numPID = [Re*Rr*Ce*Cr, Re*Ce+Rr*Cr, 1]
+denPID = [Re*Cr, 0]
+PID = ctrl.tf(numPID, denPID)
+sysPID = ctrl.feedback(ctrl.series(PID,sysCaso),1,sign=-1)
 ```
 
-La implementación permite estudiar el comportamiento de la condición alterada al aplicar un controlador con retroalimentación.
-
-En el programa Python, la respuesta del sistema control se utiliza como referencia para la simulación del tratamiento PID.
+En Python, `Tratamiento = closedloop(t,sysPID,Control)` utiliza la respuesta control como referencia. Así, el resultado no equivale a alimentar el lazo cerrado directamente con un escalón unitario; esta distinción es importante para interpretar la gráfica.
 
 [Volver al contenido](#contenido)
 
@@ -397,48 +295,30 @@ En el programa Python, la respuesta del sistema control se utiliza como referenc
 <a id="python"></a>
 ## Reproducción en Python
 
-Para verificar los resultados obtenidos mediante MATLAB se desarrolló una simulación adicional utilizando Python.
+El archivo [`codigo.py`](codigo.py) utiliza **NumPy**, **python-control** y **Matplotlib** para construir las funciones de transferencia, calcular las respuestas forzadas, implementar la retroalimentación negativa y exportar la gráfica.
 
-Se emplearon las bibliotecas:
-
-- NumPy
-- Matplotlib
-- Python Control Systems Library
-
-### Función de transferencia implementada
+Fragmento de las funciones de transferencia utilizadas:
 
 ```python
 def sis(C, R2, nombre):
-    R1, L = 1E3,100E-3
-
+    R1, L = 1E3, 100E-3
     num = [L, R2]
-
-    den = [
-        C*L*R1,
-        C*R1*R2+L,
-        R1+R2
-    ]
-
+    den = [C*L*R1, C*R1*R2+L, R1+R2]
     sys = ctrl.tf(num, den)
-
     print(f"Función de transferencia {nombre}: {sys}\n")
-
     return sys
 
-sysControl = sis(1E-6,100E3,"Control")
-
-sysCaso = sis(1000E-6,1E3,"Caso")
+sysControl = sis(1E-6, 100E3, "Control")
+sysCaso = sis(1000E-6, 1E3, "Caso")
 ```
 
-### Resultados obtenidos en Python
+### Respuesta obtenida en Python
 
-<p align="center">
-  <img src="imagenes/python.png" alt="Resultados Python" width="850">
-</p>
+![Gráfica Python de las respuestas control, caso y PID](imagenes/python.png)
 
-**Figura 3.** Comparación de la señal de entrada, sistema control, caso y tratamiento PID obtenida mediante Python.
+*Figura 3. Comparación numérica de Ve(t), Vs(t) control, Vs(t) caso y Vs(t) tratamiento PID.*
 
-[Consultar gráfica original](grafica%20python.pdf)
+[Ver gráfica original](grafica%20python.pdf)
 
 [Volver al contenido](#contenido)
 
@@ -447,39 +327,26 @@ sysCaso = sis(1000E-6,1E3,"Caso")
 <a id="resultados"></a>
 ## Resultados y evidencia experimental
 
-### Comparación de resultados
+### Comparación de respuestas
 
-Las simulaciones permiten identificar diferencias entre la respuesta de referencia y la condición alterada.
+Las gráficas de MATLAB y Python muestran que el sistema **control** se aproxima a una salida cercana a 1, mientras que el **caso** alcanza aproximadamente 0.5. Con el controlador PID, la respuesta del caso se acerca a la referencia de control en las simulaciones documentadas.
 
-| Sistema | Comportamiento |
+| Respuesta | Comportamiento observado |
 |---|---|
-| Entrada | Escalón unitario |
-| Control | Respuesta rápida con valor final cercano a 0.99 |
-| Caso | Respuesta más lenta con valor final cercano a 0.50 |
-| Tratamiento PID | Aproximación de la respuesta alterada a la referencia |
+| Entrada Ve(t) | Escalón unitario |
+| Control | Respuesta rápida, valor final cercano a 0.99 |
+| Caso | Ascenso más lento y valor final cercano a 0.50 |
+| Tratamiento PID | Aproximación de la respuesta del caso a la referencia |
 
-La diferencia principal entre las condiciones estudiadas se encuentra en la rapidez de respuesta y el valor estacionario.
+### Captura del osciloscopio
 
-### Evidencia experimental mediante osciloscopio
+![Captura de osciloscopio del laboratorio](imagenes/osciloscopio.png)
 
-<p align="center">
-  <img src="imagenes/osciloscopio.png" alt="Captura del osciloscopio" width="850">
-</p>
+*Figura 4. Evidencia experimental registrada con osciloscopio OWON. La pantalla muestra una transición de entrada y una respuesta de salida de ascenso gradual; se visualizan las lecturas Vpp de 1.080 V y 520.0 mV.*
 
-**Figura 4.** Respuesta experimental registrada mediante osciloscopio OWON.
+[Ver captura original](Screenshot%20osciloscopio.pdf)
 
-En la captura se observa una transición de entrada y una respuesta de salida gradual.
-
-Las mediciones visibles son:
-
-| Parámetro | Valor |
-|---|---:|
-| Canal 1, Vpp | 1.080 V |
-| Canal 2, Vpp | 520.0 mV |
-
-[Consultar captura original](Screenshot%20osciloscopio.pdf)
-
-Los resultados experimentales muestran cualitativamente el comportamiento dinámico del sistema modelado.
+La captura permite observar una dinámica compatible cualitativamente con el sistema alterado. No se reportan tolerancias de componentes, repetición de ensayos ni calibración instrumental en los archivos suministrados; por ello no se presenta una validación cuantitativa adicional.
 
 [Volver al contenido](#contenido)
 
@@ -488,17 +355,7 @@ Los resultados experimentales muestran cualitativamente el comportamiento dinám
 <a id="verificacion"></a>
 ## Verificación cruzada
 
-Los resultados se analizaron mediante diferentes herramientas de simulación y medición.
-
-**MATLAB/Simulink:** permitió ejecutar el modelo y visualizar las respuestas de control, caso y tratamiento PID.
-
-**Python:** permitió reproducir las funciones de transferencia y comparar las respuestas mediante una segunda herramienta computacional.
-
-**BioRender:** facilitó la representación visual de la analogía entre el sistema fisiológico y el circuito eléctrico.
-
-**Osciloscopio:** proporcionó evidencia experimental de la respuesta temporal del sistema.
-
-Las simulaciones presentan concordancia cualitativa en la separación entre las condiciones control y caso, así como en el efecto del controlador.
+Se comparan los resultados de la función de transferencia, el cuaderno MATLAB, el programa Python y la medición con osciloscopio. Las dos gráficas computacionales reproducen la separación entre control y caso y muestran el efecto del tratamiento PID. La evidencia experimental documenta una entrada de tipo escalón y una respuesta con transición gradual. Las diferencias de escalas, componentes no ideales y condiciones de medición deben considerarse antes de establecer equivalencia numérica exacta.
 
 [Volver al contenido](#contenido)
 
@@ -525,7 +382,7 @@ Practica4_Endocrino/
     └── osciloscopio.png
 ```
 
-Las imágenes se encuentran vinculadas mediante rutas relativas para que se visualicen directamente en GitHub.
+Las imágenes PNG están integradas mediante rutas relativas para que se visualicen automáticamente en GitHub, siempre que se suba la carpeta `imagenes` junto con `README.md`.
 
 [Volver al contenido](#contenido)
 
@@ -534,32 +391,15 @@ Las imágenes se encuentran vinculadas mediante rutas relativas para que se visu
 <a id="requisitos"></a>
 ## Requisitos y reproducción
 
-### Software utilizado
+**Software:** MATLAB con Simulink y los complementos requeridos por el modelo `.slx`; Python 3 con `numpy`, `matplotlib` y `control`; lector de PDF. Simscape Electrical es necesario si se desea ejecutar las partes del modelo construidas con componentes físicos de esa biblioteca.
 
-- MATLAB
-- Simulink
-- Simscape Electrical, cuando corresponda al modelo
-- Python 3
-- NumPy
-- Matplotlib
-- Python Control Systems Library
-- BioRender
-
-### Instalación de bibliotecas Python
+Para instalar las dependencias de Python:
 
 ```bash
 python -m pip install numpy matplotlib control
 ```
 
-### Procedimiento de reproducción
-
-1. Descargar los archivos del repositorio.
-2. Abrir el modelo de Simulink.
-3. Ejecutar el cuaderno MATLAB.
-4. Verificar las respuestas de control, caso y tratamiento PID.
-5. Ejecutar el programa `codigo.py`.
-6. Comparar las gráficas obtenidas.
-7. Revisar el diagrama BioRender y la evidencia experimental.
+Para reproducir los resultados, colocar los archivos en una misma carpeta, renombrar una copia de `sistema(3).slx` a `sistema.slx`, ejecutar el cuaderno MATLAB y correr `python codigo.py`. Revisar que los bloques del modelo estén disponibles en la instalación local. La salida de Python se guarda como `Control_caso_python4.pdf` según el código original.
 
 [Volver al contenido](#contenido)
 
@@ -568,15 +408,7 @@ python -m pip install numpy matplotlib control
 <a id="conclusiones"></a>
 ## Conclusiones
 
-El modelado del sistema endócrino mediante una analogía eléctrica permitió analizar su comportamiento dinámico a partir de un sistema de segundo orden.
-
-Las modificaciones de resistencia y capacitancia produjeron diferencias en el tiempo de respuesta y en el valor estacionario de las condiciones control y caso.
-
-La implementación del controlador PID permitió aproximar la respuesta del sistema alterado a la condición de referencia, mostrando la utilidad de la retroalimentación para mejorar el comportamiento del modelo.
-
-Las simulaciones desarrolladas en MATLAB y Python facilitaron la comparación de resultados, mientras que el diagrama BioRender y las mediciones del osciloscopio complementaron la interpretación fisiológica y experimental.
-
-La práctica permitió integrar conocimientos de modelado matemático, sistemas de control, programación y análisis de señales aplicados a la Ingeniería Biomédica.
+El circuito eléctrico de segundo orden permite estudiar de manera simplificada el comportamiento dinámico de una señal hormonal. Las modificaciones de capacitancia y resistencia entre el control y el caso alteran la rapidez de respuesta y el valor estacionario. Las gráficas obtenidas mediante MATLAB y Python muestran que el controlador PID reduce la diferencia entre la respuesta alterada y la referencia. La evidencia de osciloscopio complementa la simulación al mostrar la transición temporal de una señal real. El modelo es útil como ejercicio académico de control, pero no constituye una representación clínica validada de un trastorno endocrino específico.
 
 [Volver al contenido](#contenido)
 
@@ -585,12 +417,9 @@ La práctica permitió integrar conocimientos de modelado matemático, sistemas 
 <a id="referencias"></a>
 ## Referencias
 
-1. Valle Trujillo, P. A. (2026). *Modelado de Sistemas Fisiológicos (IBF-1020)*. Apartado 5.6: Modelado y control del sistema endócrino. Instituto Tecnológico de Tijuana.
-
+1. Valle Trujillo, P. A. (2026). *Modelado de Sistemas Fisiológicos (IBF-1020)*, apartado 5.6, «Práctica: Modelado y control del sistema endócrino». Instituto Tecnológico de Tijuana.
 2. Valle Trujillo, P. A. *README de referencia: Práctica 0 — Modelo de mecánica pulmonar de segundo orden*. Material proporcionado por el docente.
-
-3. Armenta Medina, O. E. *Armenta23212178.mlx*, *codigo.py*, *sistema(3).slx*, resultados gráficos, evidencia de osciloscopio y diagrama BioRender.
-
+3. Armenta Medina, O. E. *Armenta23212178.mlx*, *codigo.py*, *sistema(3).slx*, resultados gráficos, captura de osciloscopio y diagrama BioRender. Archivos de la práctica.
 4. Repositorio de la asignatura: https://github.com/DrPaulValle/MSF-IBF1020
 
 [Volver al contenido](#contenido)
