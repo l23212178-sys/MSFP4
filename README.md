@@ -98,7 +98,7 @@ El sistema endócrino coordina procesos fisiológicos mediante la secreción de 
 
 ### Diagrama desarrollado en BioRender
 
-![BioRender: sistema endócrino en homeostasis y caso de hipertiroidismo](imagenes/biorender.png)
+![BioRender: sistema endócrino en homeostasis y caso de hipertiroidismo](biorender.png)
 
 *Figura 1. Diagrama original de BioRender: a la izquierda, sistema de control en homeostasis y circuito eléctrico equivalente; a la derecha, caso ilustrativo de hipertiroidismo. Se identifican Ve(t), Fe(t), Vs(t), Fs(t), R1, R2, C y L.*
 
@@ -244,7 +244,7 @@ plotsignals(x.control,x.CE,x.PID,x.Ve,'Caso')
 
 ### Respuesta obtenida en MATLAB
 
-![Gráfica del cuaderno MATLAB: control, caso, PID y entrada](imagenes/matlab.png)
+![Gráfica del cuaderno MATLAB: control, caso, PID y entrada](matlab.png)
 
 *Figura 2. Respuestas de la simulación del cuaderno MATLAB, de 0 a 10 s.*
 
@@ -314,7 +314,7 @@ sysCaso = sis(1000E-6, 1E3, "Caso")
 
 ### Respuesta obtenida en Python
 
-![Gráfica Python de las respuestas control, caso y PID](imagenes/python.png)
+![Gráfica Python de las respuestas control, caso y PID](python.png)
 
 *Figura 3. Comparación numérica de Ve(t), Vs(t) control, Vs(t) caso y Vs(t) tratamiento PID.*
 
@@ -340,7 +340,7 @@ Las gráficas de MATLAB y Python muestran que el sistema **control** se aproxima
 
 ### Captura del osciloscopio
 
-![Captura de osciloscopio del laboratorio](imagenes/osciloscopio.png)
+![Captura de osciloscopio del laboratorio](osciloscopio.png)
 
 *Figura 4. Evidencia experimental registrada con osciloscopio OWON. La pantalla muestra una transición de entrada y una respuesta de salida de ascenso gradual; se visualizan las lecturas Vpp de 1.080 V y 520.0 mV.*
 
@@ -375,14 +375,13 @@ Practica4_Endocrino/
 ├── grafica cuadernillo.pdf
 ├── grafica python.pdf
 ├── Screenshot osciloscopio.pdf
-└── imagenes/
-    ├── biorender.png
-    ├── matlab.png
-    ├── python.png
-    └── osciloscopio.png
+├── biorender.png
+├── matlab.png
+├── python.png
+└── osciloscopio.png
 ```
 
-Las imágenes PNG están integradas mediante rutas relativas para que se visualicen automáticamente en GitHub, siempre que se suba la carpeta `imagenes` junto con `README.md`.
+Las imágenes PNG están integradas mediante rutas relativas para que se visualicen automáticamente en GitHub, siempre que los archivos PNG se suban al mismo nivel que `README.md`.
 
 [Volver al contenido](#contenido)
 
