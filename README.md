@@ -48,7 +48,7 @@ Esta práctica analiza un modelo fenomenológico simplificado de secreción, tra
 
 El diagrama BioRender ilustra **homeostasis** y un **caso etiquetado como hipertiroidismo**. Esta denominación es una interpretación gráfica del estudiante: el modelo eléctrico del instructivo es genérico y no valida por sí solo un diagnóstico o una fisiología específica de la tiroides.
 
-**Palabras clave:** sistema endócrino; homeostasis; hipertiroidismo; analogía eléctrica; circuito RLC; función de transferencia; PID; MATLAB; Simulink; Simscape Electrical; Python; BioRender.
+**Palabras clave:** sistema endócrino; homeostasis; hipertiroidismo; circuito RLC; PID;  BioRender.
 
 [Volver al contenido](#contenido)
 
