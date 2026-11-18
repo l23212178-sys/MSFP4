@@ -366,19 +366,17 @@ Se comparan los resultados de la función de transferencia, el cuaderno MATLAB, 
 
 ```text
 Practica4_Endocrino/
-├── README.md
+├── analisis matematico.pdf
 ├── Armenta23212178.mlx
 ├── Armenta23212178.pdf
-├── sistema(3).slx
+├── sistema.slx
 ├── codigo.py
-├── Biorender (sistema endocrino).pdf
-├── grafica cuadernillo.pdf
-├── grafica python.pdf
-├── Screenshot osciloscopio.pdf
+├── controlador PID.jpeg
 ├── biorender.png
 ├── matlab.png
 ├── python.png
 └── osciloscopio.png
+
 ```
 
 Las imágenes PNG están integradas mediante rutas relativas para que se visualicen automáticamente en GitHub, siempre que los archivos PNG se suban al mismo nivel que `README.md`.
